@@ -1,7 +1,6 @@
 <% include header %>
 
-  <%- message %>
-  <%- error.status %>
-  <%- error.stack %>
-  
+  <h1 style="text-align: center;"><%- message %> <%- error.status %></h1>
+  <p><%- error.stack %></p>
+
 <% include footer %>
