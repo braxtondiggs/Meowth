@@ -5,20 +5,25 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist",
-    "serve": "tsc && npm run start",
-    "heroku-postbuild": "tsc"
+    "build": "tsc",
+    "serve": "npm run build && npm start",
+    "heroku-postbuild": "tsc",
+    "test": "tslint tslint.json \"./**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@sendgrid/mail": "^6.2.1",
-    "@types/cors": "^2.8.3",
-    "@types/express": "^4.11.1",
     "cors": "^2.8.4",
+    "debug": "^3.1.0",
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
-    "tslint": "^5.9.1",
-    "typescript": "^2.7.1"
+    "typescript": "^2.7.1",
+    "@types/cors": "^2.8.3",
+    "@types/debug": "0.0.30",
+    "@types/express": "^4.11.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tslint": "^5.9.1"
+  },
   "engines": {
     "node": "8.2.1",
     "npm": "5.3.0"

@@ -1,18 +1,23 @@
 'use strict';
-import * as express from 'express';
-import * as http from 'http';
 import * as cors from 'cors';
+import * as express from 'express';
+import MailRouter from './mail';
 
-const app = express();
-const server = http.createServer(app);
-const port = process.env.PORT || 8999;
+class App {
+  public express: express.Application;
+  constructor() {
+    this.express = express();
+    this.middleware();
+    this.routes();
+  }
 
-// CORS
-app.use(cors());
-app.options('*', cors());
+  private middleware(): void {
+    this.express.use(cors());
+    this.express.options('*', cors());
+  }
 
-app.use('/api/mail', require('./mail'));
-
-app.listen(port, () => {
-  return console.log(`Server started on port ${port}`);
-});
+  private routes(): void {
+    this.express.use('/api/mail', MailRouter);
+  }
+}
+export default new App().express;
