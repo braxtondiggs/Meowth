@@ -15,4 +15,4 @@ SendGrid Web API v3 endpoints for Node
 
 2. Run `heroku config:get SENDGRID_KEY -s >> .env --app meowth1` to install Heroku Environment Variables.
 
-3. Run `nf run npm run serve` to start the development server.
+3. Run `nf run npm run watch` to start the development server.
