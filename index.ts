@@ -22,7 +22,7 @@ function normalizePort(val: number | string): number | string | boolean {
 
 function onListening(): void {
   const addr = server.address();
-  const bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
+  const bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr ? addr.port : port}`;
   debug(`Listening on ${bind}`);
   console.log(`Listening on ${bind}`);
 }
