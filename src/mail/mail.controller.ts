@@ -1,13 +1,13 @@
 'use strict';
 import * as sgMail from '@sendgrid/mail';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { validationResult } from 'express-validator/check';
-import { matchedData, sanitize } from 'express-validator/filter';
+import { matchedData } from 'express-validator/filter';
 
 sgMail.setApiKey(process.env.SENDGRID_KEY as string);
 
 export class MailController {
-  public inquire(req: Request, res: Response, next: NextFunction) {
+  public inquire(req: Request, res: Response) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.mapped() });
@@ -21,7 +21,7 @@ export class MailController {
       subject: data.subject ? data.subject : 'Message from BraxtonDiggs.com',
       text: data.message,
       to: {
-        email: 'braxtondiggs@gmail.com',
+        email: 'hello@braxtondiggs.com',
         name: 'Braxton Diggs'
       }
     }).then(() => {
